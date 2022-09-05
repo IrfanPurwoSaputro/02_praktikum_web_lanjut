@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Pagecontroller;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +29,10 @@ Route::get('/articles/{id}', function ($id) {
     echo "Ini merupakan halaman artikel ". $id;
 });
 
-Route::get('/index',[Pagecontroller::class, 'index']);
-Route::get('/about',[Pagecontroller::class, 'about']);
-Route::get('/articles/{id}',[Pagecontroller::class, 'articles']);
+Route::get('/home',[HomeController::class, 'index']);
+Route::get('/about',[AboutController::class, 'index']);
+Route::get('/articles/{id}',[ArticleController::class, 'index']);
+
+
 
 
