@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PageController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,17 +13,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        return('Ini adalah halaman home');
-    }
-
-    public function about()
-    {
-        return('2241727017, Irfan Purwo Saputro, Web B');
-    }
-
-    public function articles($id)
-    {
-        return('Ini merupakan halaman artikel '. $id);
+        return redirect('https://www.educastudio.com/contact-us');
     }
 
     /**
@@ -33,7 +23,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        //
+        return redirect('https://www.educastudio.com/contact-us');
     }
 
     /**
@@ -44,7 +34,7 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return redirect('https://www.educastudio.com/contact-us');
     }
 
     /**
@@ -55,7 +45,7 @@ class PageController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect('https://www.educastudio.com/contact-us');
     }
 
     /**

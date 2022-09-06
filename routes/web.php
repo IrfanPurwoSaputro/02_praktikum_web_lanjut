@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Pagecontroller;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Homecontroller;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,20 +20,60 @@ use App\Http\Controllers\ArticleController;
 */
 
 Route::get('/', function () {
-    echo "Selamat Datang";
+    return redirect('https://www.educastudio.com/');
 });
 
-Route::get('/about', function () {
-    echo "2241727017, Irfan Purwo Saputro, TI4J";
+// Route::get('/about', function () {
+//     echo "2241727017, Irfan Purwo Saputro, Web B";
+// });
+
+// Route::get('/articles/{id}', function ($id) {
+//     echo "Ini merupakan halaman artikel ". $id;
+// });
+
+// Route::get('/home',[Pagecontroller::class, 'index']);
+// Route::get('/about',[Pagecontroller::class, 'about']);
+// Route::get('/articles/{id}',[Pagecontroller::class, 'articles']);
+
+Route::get('home', Homecontroller::class);
+Route::get('about',AboutController::class);
+Route::get('articles/{id}',ArticleController::class);
+
+Route::prefix('category')->group(function () {
+    Route::get('/marbel-and-friends-kids-games', function () {
+        return redirect('https://www.educastudio.com/category/marbel-and-friends-kids-games');
+    });
+    Route::get('/riri-story-books', function () {
+        return redirect('https://www.educastudio.com/category/riri-story-books');
+    });
+    Route::get('/kolak-kids-songs', function () {
+        return redirect('https://www.educastudio.com/category/kolak-kids-songs');
+    });
 });
 
-Route::get('/articles/{id}', function ($id) {
-    echo "Ini merupakan halaman artikel ". $id;
+Route::get('news/{title?}', function ($title = null) {
+    return redirect('https://www.educastudio.com/news/'.$title);
 });
 
-Route::get('/home',[HomeController::class, 'index']);
-Route::get('/about',[AboutController::class, 'index']);
-Route::get('/articles/{id}',[ArticleController::class, 'index']);
+Route::prefix('program')->group(function () {
+    Route::get('/karir', function () {
+        return redirect('https://www.educastudio.com/program/karir');
+    });
+    Route::get('/magang', function () {
+        return redirect('https://www.educastudio.com/program/magang');
+    });
+    Route::get('/kunjungan-industri', function () {
+        return redirect('https://www.educastudio.com/program/kunjungan-industri');
+    });
+});
+
+Route::resource('contact', ContactController::class);
+
+
+
+
+
+
 
 
 
