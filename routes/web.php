@@ -7,6 +7,8 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ContactController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,9 +37,9 @@ Route::get('/', function () {
 // Route::get('/about',[Pagecontroller::class, 'about']);
 // Route::get('/articles/{id}',[Pagecontroller::class, 'articles']);
 
-Route::get('home', Homecontroller::class);
-Route::get('about',AboutController::class);
-Route::get('articles/{id}',ArticleController::class);
+// Route::get('home', Homecontroller::class);
+// Route::get('about',AboutController::class);
+// Route::get('articles/{id}',ArticleController::class);
 
 Route::prefix('category')->group(function () {
     Route::get('/marbel-and-friends-kids-games', function () {
@@ -76,5 +78,11 @@ Route::resource('contact', ContactController::class);
 
 
 
+
+
+
+Auth::routes();
+
+Route::get('/home', [IndexController::class, 'index'])->name('home');
 
 
